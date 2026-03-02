@@ -1,0 +1,177 @@
+﻿<Window x:Class="Proyecto_senavicola.view.dialogs.UbicarGallinasDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ubicar Gallinas en Galpón" 
+        Height="400" 
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        ResizeMode="NoResize">
+
+    <Border CornerRadius="15" Background="White" BorderBrush="#179002" BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Cabecera -->
+            <Border Grid.Row="0" Background="#179002" CornerRadius="15,15,0,0">
+                <Grid>
+                    <TextBlock Text="📍 Ubicar Gallinas en Galpón" 
+                               FontSize="20" 
+                               FontWeight="Bold" 
+                               Foreground="White" 
+                               VerticalAlignment="Center" 
+                               Margin="20,0"/>
+                    <Button Content="✕" 
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Center" 
+                            Width="40" 
+                            Height="40" 
+                            Background="Transparent" 
+                            Foreground="White" 
+                            BorderThickness="0" 
+                            FontSize="20" 
+                            Cursor="Hand" 
+                            Click="BtnCancelar_Click" 
+                            Margin="0,0,10,0"/>
+                </Grid>
+            </Border>
+
+            <!-- Contenido -->
+            <StackPanel Grid.Row="1" Margin="20,20">
+                <!-- Información del Lote -->
+                <Border Background="#E8F5E9" CornerRadius="8" Padding="15" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock x:Name="txtInfoLote" 
+                                   Text="Lote: XXXXX" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   Foreground="#179002" 
+                                   Margin="0,0,0,5"/>
+                        <TextBlock x:Name="txtCantidadPendiente" 
+                                   Text="Gallinas pendientes: 0" 
+                                   FontSize="13" 
+                                   Foreground="#666"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="Seleccionar Galpón *" FontSize="12" Margin="0,0,0,5"/>
+                <ComboBox x:Name="cmbGalpon" 
+                          Height="35" 
+                          Margin="0,0,0,20"
+                          SelectionChanged="CmbGalpon_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Codigo}" FontWeight="Bold"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding Nombre}"/>
+                                <Run Text=" ("/>
+                                <Run Text="{Binding CantidadAves}"/>
+                                <Run Text=" aves)"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock Text="Cantidad a Ubicar *" FontSize="12" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="txtCantidad" 
+                             Grid.Column="0" 
+                             Height="35" 
+                             Padding="10" 
+                             Margin="0,0,10,0"
+                             PreviewTextInput="NumericTextBox_PreviewTextInput"
+                             TextChanged="TxtCantidad_TextChanged"/>
+                    <Button Grid.Column="1" 
+                            Content="Todas" 
+                            Width="80" 
+                            Height="35" 
+                            Background="#FF9800" 
+                            Foreground="White" 
+                            BorderThickness="0" 
+                            Cursor="Hand"
+                            Click="BtnTodasLasGallinas_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="8" 
+                                        Padding="10,5">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <!-- Advertencia -->
+                <Border x:Name="borderAdvertencia" 
+                        Background="#FFF3E0" 
+                        CornerRadius="8" 
+                        Padding="10" 
+                        Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="⚠️" FontSize="16" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="txtAdvertencia" 
+                                   Text="" 
+                                   TextWrapping="Wrap" 
+                                   Foreground="#FF6F00"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Pie -->
+            <Border Grid.Row="2" Background="#F5F5F5" Padding="20" CornerRadius="0,0,15,15">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancelar" 
+                            Width="100" 
+                            Height="35" 
+                            Background="#666666" 
+                            Foreground="White" 
+                            BorderThickness="0" 
+                            Cursor="Hand" 
+                            Margin="0,0,10,0"
+                            Click="BtnCancelar_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="8" 
+                                        Padding="15,8">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="btnUbicar" 
+                            Content="Ubicar" 
+                            Width="100" 
+                            Height="35" 
+                            Background="#179002" 
+                            Foreground="White" 
+                            BorderThickness="0" 
+                            Cursor="Hand"
+                            Click="BtnUbicar_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="8" 
+                                        Padding="15,8">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,277 @@
+﻿<Window x:Class="Proyecto_senavicola.view.dialogs.RegistrarUsuarioDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Registrar Usuario"
+        Height="600" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#2196F3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ModernComboBox" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#2196F3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1976D2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CancelButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#9E9E9E"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#757575"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="White" CornerRadius="15" BorderBrush="#E0E0E0" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect Color="#000000" BlurRadius="30" ShadowDepth="0" Opacity="0.2"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#2196F3" CornerRadius="15,15,0,0" Padding="20,15">
+                <Grid>
+                    <TextBlock x:Name="txtTitulo"
+                               Text="➕ Registrar Nuevo Usuario"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               VerticalAlignment="Center"/>
+                    <Button Content="✕"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Padding="10,0"
+                            Click="BtnCerrar_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    CornerRadius="5"
+                                                    Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#1976D2"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- Content -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="30,25">
+                    <!-- Documento -->
+                    <TextBlock Text="Documento *"
+                               FontSize="13"
+                               Foreground="#333333"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8"/>
+                    <TextBox x:Name="txtDocumento"
+                             Style="{StaticResource ModernTextBox}"
+                             MaxLength="20"
+                             Margin="0,0,0,15"/>
+
+                    <!-- Nombre -->
+                    <TextBlock Text="Nombre *"
+                               FontSize="13"
+                               Foreground="#333333"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8"/>
+                    <TextBox x:Name="txtNombre"
+                             Style="{StaticResource ModernTextBox}"
+                             MaxLength="50"
+                             Margin="0,0,0,15"/>
+
+                    <!-- Apellido -->
+                    <TextBlock Text="Apellido *"
+                               FontSize="13"
+                               Foreground="#333333"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8"/>
+                    <TextBox x:Name="txtApellido"
+                             Style="{StaticResource ModernTextBox}"
+                             MaxLength="50"
+                             Margin="0,0,0,15"/>
+
+                    <!-- Email -->
+                    <TextBlock Text="Email"
+                               FontSize="13"
+                               Foreground="#333333"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8"/>
+                    <TextBox x:Name="txtEmail"
+                             Style="{StaticResource ModernTextBox}"
+                             MaxLength="100"
+                             Margin="0,0,0,15"/>
+
+                    <!-- Rol -->
+                    <TextBlock Text="Rol *"
+                               FontSize="13"
+                               Foreground="#333333"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8"/>
+                    <ComboBox x:Name="cmbRol"
+                              Style="{StaticResource ModernComboBox}"
+                              Margin="0,0,0,15">
+                        <ComboBoxItem Content="Administrador"/>
+                        <ComboBoxItem Content="Aprendiz"/>
+                        <ComboBoxItem Content="Visitante"/>
+                    </ComboBox>
+
+                    <!-- Contraseña (solo para nuevo) -->
+                    <StackPanel x:Name="pnlPassword" Visibility="Visible">
+                        <TextBlock Text="Contraseña *"
+                                   FontSize="13"
+                                   Foreground="#333333"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,8"/>
+                        <PasswordBox x:Name="txtPassword"
+                                     Style="{StaticResource ModernPasswordBox}"
+                                     Margin="0,0,0,15"/>
+
+                        <TextBlock Text="Confirmar Contraseña *"
+                                   FontSize="13"
+                                   Foreground="#333333"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,8"/>
+                        <PasswordBox x:Name="txtConfirmarPassword"
+                                     Style="{StaticResource ModernPasswordBox}"
+                                     Margin="0,0,0,15"/>
+                    </StackPanel>
+
+                    <TextBlock Text="* Campos obligatorios"
+                               FontSize="11"
+                               Foreground="#999999"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Footer Buttons -->
+            <Border Grid.Row="2" 
+                    Background="#F5F5F5" 
+                    CornerRadius="0,0,15,15" 
+                    Padding="20,15">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right">
+                    <Button Content="Cancelar"
+                            Style="{StaticResource CancelButton}"
+                            Width="120"
+                            Margin="0,0,10,0"
+                            Click="BtnCancelar_Click"/>
+                    <Button x:Name="btnGuardar"
+                            Content="Guardar"
+                            Style="{StaticResource ModernButton}"
+                            Width="120"
+                            Click="BtnGuardar_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

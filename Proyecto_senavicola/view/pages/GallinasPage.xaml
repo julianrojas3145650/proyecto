@@ -1,0 +1,359 @@
+﻿<Page x:Class="Proyecto_senavicola.view.pages.GallinasPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:Proyecto_senavicola.view.controls"
+      Title="Gestión de Gallinas"
+      Background="#F5F5F5"
+      Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.1" Color="Black"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#179002"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="8" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1FA303"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ModernDataGrid" TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="AlternatingRowBackground" Value="#F9F9F9"/>
+            <Setter Property="RowHeight" Value="45"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="ColumnHeaderHeight" Value="50"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- NavBar -->
+        <controls:NavBarControl x:Name="navBar" Grid.Row="0"/>
+
+        <!-- Contenido Principal -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="20">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="1" 
+                                    Orientation="Horizontal" 
+                                    VerticalAlignment="Center">
+                        <Button Content="📦 Registrar Lote" 
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Click="BtnRegistrarLote_Click" 
+                                    Margin="0,0,10,0"/>
+                        <Button Content="🏠 Registrar Galpón" 
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Click="BtnRegistrarGalpon_Click"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Pestañas -->
+                <TabControl Margin="10" Background="Transparent" BorderThickness="0">
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Border Name="Border" 
+                                                Background="White" 
+                                                BorderBrush="#E0E0E0" 
+                                                BorderThickness="1,1,1,0" 
+                                                CornerRadius="10,10,0,0" 
+                                                Padding="20,12" 
+                                                Margin="0,0,5,0">
+                                            <ContentPresenter x:Name="ContentSite" 
+                                                            ContentSource="Header" 
+                                                            HorizontalAlignment="Center" 
+                                                            VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="#179002"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter Property="Foreground" Value="#666666"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="#F0F0F0"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
+
+                    <!-- Pestaña: Lotes de Gallinas -->
+                    <TabItem Header="📦 Lotes de Gallinas" FontSize="14">
+                        <Border Style="{StaticResource CardStyle}" 
+                                BorderThickness="1,0,1,1" 
+                                BorderBrush="#E0E0E0" 
+                                CornerRadius="0,10,10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Margin="0,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox x:Name="txtBuscarLote" 
+                                             Grid.Column="0" 
+                                             Height="40" 
+                                             Padding="10" 
+                                             FontSize="14"
+                                             VerticalContentAlignment="Center"
+                                             Margin="0,0,10,0"
+                                             Text="🔍 Buscar lote..."/>
+
+                                    <ComboBox x:Name="cmbFiltroEstadoLote" 
+                                              Grid.Column="1" 
+                                              Width="150" 
+                                              Height="40"
+                                              SelectionChanged="CmbFiltroEstadoLote_SelectionChanged">
+                                        <ComboBoxItem Content="Todos" IsSelected="True"/>
+                                        <ComboBoxItem Content="Pendiente"/>
+                                        <ComboBoxItem Content="Parcial"/>
+                                        <ComboBoxItem Content="Completo"/>
+                                    </ComboBox>
+                                </Grid>
+
+                                <DataGrid x:Name="dgLotesGallinas" 
+                                          Grid.Row="1" 
+                                          Style="{StaticResource ModernDataGrid}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código Lote" Binding="{Binding CodigoLote}" Width="120"/>
+                                        <DataGridTextColumn Header="Cantidad Total" Binding="{Binding CantidadTotal}" Width="120"/>
+                                        <DataGridTextColumn Header="Asignadas" Binding="{Binding CantidadAsignada}" Width="100"/>
+                                        <DataGridTextColumn Header="Pendientes" Binding="{Binding CantidadPendiente}" Width="100">
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="#FF6F00"/>
+                                                    <Setter Property="FontWeight" Value="Bold"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="Raza" Binding="{Binding Raza}" Width="150"/>
+                                        <DataGridTextColumn Header="Fecha Llegada" Binding="{Binding FechaLlegada, StringFormat=dd/MM/yyyy}" Width="120"/>
+                                        <DataGridTemplateColumn Header="Estado" Width="120">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="{Binding EstadoColor}" 
+                                                            CornerRadius="15" 
+                                                            Padding="10,5">
+                                                        <TextBlock Text="{Binding Estado}" 
+                                                                   Foreground="White" 
+                                                                   FontWeight="SemiBold" 
+                                                                   HorizontalAlignment="Center"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Acciones" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                        <Button Content="📍 Ubicar" 
+                                                                Background="#2196F3" 
+                                                                Foreground="White" 
+                                                                Padding="10,5" 
+                                                                Margin="5" 
+                                                                BorderThickness="0" 
+                                                                Cursor="Hand"
+                                                                Click="BtnUbicarGallinas_Click" 
+                                                                Tag="{Binding}">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}" 
+                                                                            CornerRadius="5" 
+                                                                            Padding="{TemplateBinding Padding}">
+                                                                        <ContentPresenter/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
+                                                        <Button Content="📋 Detalle" 
+                                                                Background="#4CAF50" 
+                                                                Foreground="White" 
+                                                                Padding="10,5" 
+                                                                Margin="5" 
+                                                                BorderThickness="0" 
+                                                                Cursor="Hand"
+                                                                Click="BtnDetalleLote_Click" 
+                                                                Tag="{Binding}">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}" 
+                                                                            CornerRadius="5" 
+                                                                            Padding="{TemplateBinding Padding}">
+                                                                        <ContentPresenter/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+                    </TabItem>
+
+                    <!-- Pestaña: Galpones -->
+                    <TabItem Header="🏠 Galpones" FontSize="14">
+                        <Border Style="{StaticResource CardStyle}" 
+                                BorderThickness="1,0,1,1" 
+                                BorderBrush="#E0E0E0" 
+                                CornerRadius="0,10,10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="txtBuscarGalpon" 
+                                         Grid.Row="0" 
+                                         Height="40" 
+                                         Padding="10" 
+                                         FontSize="14"
+                                         VerticalContentAlignment="Center"
+                                         Margin="0,0,0,15"
+                                         Text="🔍 Buscar galpón..."/>
+
+                                <DataGrid x:Name="dgGalpones" 
+                                          Grid.Row="1" 
+                                          Style="{StaticResource ModernDataGrid}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100"/>
+                                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                                        <DataGridTextColumn Header="Raza" Binding="{Binding Raza}" Width="150"/>
+                                        <DataGridTextColumn Header="Cantidad Aves" Binding="{Binding CantidadAves}" Width="120"/>
+                                        <DataGridTextColumn Header="Longitud (m)" Binding="{Binding Longitud}" Width="100"/>
+                                        <DataGridTextColumn Header="Ración/Ave (g)" Binding="{Binding RacionPorAve}" Width="120"/>
+                                        <DataGridTemplateColumn Header="Acciones" Width="200">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                        <Button Content="✏️" 
+                                                                Background="#2196F3" 
+                                                                Foreground="White" 
+                                                                Padding="8,4" 
+                                                                Margin="5" 
+                                                                BorderThickness="0" 
+                                                                Cursor="Hand"
+                                                                Click="BtnEditarGalpon_Click" 
+                                                                Tag="{Binding}">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}" 
+                                                                            CornerRadius="5" 
+                                                                            Padding="{TemplateBinding Padding}">
+                                                                        <ContentPresenter/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
+                                                        <Button Content="🗑️" 
+                                                                Background="#F44336" 
+                                                                Foreground="White" 
+                                                                Padding="8,4" 
+                                                                Margin="5" 
+                                                                BorderThickness="0" 
+                                                                Cursor="Hand"
+                                                                Click="BtnEliminarGalpon_Click" 
+                                                                Tag="{Binding}">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border Background="{TemplateBinding Background}" 
+                                                                            CornerRadius="5" 
+                                                                            Padding="{TemplateBinding Padding}">
+                                                                        <ContentPresenter/>
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+                    </TabItem>
+
+                    <!-- Pestaña: Asignaciones -->
+                    <TabItem Header="📍 Historial de Asignaciones" FontSize="14">
+                        <Border Style="{StaticResource CardStyle}" 
+                                BorderThickness="1,0,1,1" 
+                                BorderBrush="#E0E0E0" 
+                                CornerRadius="0,10,10,10">
+                            <DataGrid x:Name="dgAsignaciones" Style="{StaticResource ModernDataGrid}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Fecha" Binding="{Binding FechaAsignacion, StringFormat=dd/MM/yyyy HH:mm}" Width="150"/>
+                                    <DataGridTextColumn Header="Lote" Binding="{Binding CodigoLote}" Width="120"/>
+                                    <DataGridTextColumn Header="Galpón" Binding="{Binding CodigoGalpon}" Width="120"/>
+                                    <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" Width="100"/>
+                                    <DataGridTextColumn Header="Raza" Binding="{Binding Raza}" Width="150"/>
+                                    <DataGridTextColumn Header="Usuario" Binding="{Binding UsuarioNombre}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,239 @@
+﻿<Window x:Class="Proyecto_senavicola.view.window.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SignInWindow" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+
+    <Border CornerRadius="12">
+        <Border.Background>
+            <ImageBrush ImageSource="/images/Foto_sena.jpeg" Stretch="None"/>
+        </Border.Background>
+
+        <Border CornerRadius="10" BorderThickness="1">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#007832" Offset="0.75"/>
+                    <GradientStop Color="#39A900" Offset="1.5"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="6"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Botón Volver -->
+                    <Button x:Name="btnVolver"
+                            Grid.Column="0"
+                            Content="← Volver"
+                            Foreground="White"
+                            Background="#1FA303"
+                            FontSize="11"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"
+                            Margin="10,8,0,8"
+                            Padding="12,4"
+                            BorderThickness="0"
+                            Click="BtnVolver_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="10"
+                                        x:Name="border"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#007D00"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button x:Name="btnMinimizar"
+                            Background="#00B6EB"
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="10"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="BtnMinimizar_Click" 
+                            Margin="0,4,0,4">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#00B6EB"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#7ADDFF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button x:Name="btnCerrar"
+                            Background="#D14545"
+                            BorderThickness="0"
+                            Content="x"
+                            Foreground="White"
+                            FontSize="10"
+                            Cursor="Hand"
+                            Grid.Column="3"
+                            Click="BtnCerrar_Click" 
+                            Margin="0,4,0,4">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#00B6EB"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#7ADDFF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <Border Grid.Row="1"
+                        Background="White"
+                        Width="350"
+                        Height="450"
+                        CornerRadius="20">
+                    <StackPanel Margin="30,20">
+
+                        <Image Source="/images/Logo_sena.png"
+                               Width="80"
+                               Margin="0,10,0,0"/>
+
+                        <TextBlock Text="Inicio de sesión"
+                                   Foreground="Gray"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   FontFamily="Montserrat"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,15,0,30"/>
+
+                        <!-- Documento -->
+                        <TextBlock Text="Documento"
+                                   Foreground="DarkGray"
+                                   FontSize="11"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   Margin="0,0,0,8"/>
+
+                        <Border BorderThickness="2"
+                                BorderBrush="#E0E0E0"
+                                CornerRadius="10"
+                                Background="White"
+                                Margin="0,0,0,20">
+                            <TextBox x:Name="txtDocumento"
+                                     FontSize="14"
+                                     FontFamily="Montserrat"
+                                     Padding="12,10"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     KeyDown="TxtDocumento_KeyDown"/>
+                        </Border>
+
+                        <!-- Contraseña -->
+                        <TextBlock Text="Contraseña"
+                                   Foreground="DarkGray"
+                                   FontSize="11"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   Margin="0,0,0,8"/>
+
+                        <Border BorderThickness="2"
+                                BorderBrush="#E0E0E0"
+                                CornerRadius="10"
+                                Background="White"
+                                Margin="0,0,0,25">
+                            <PasswordBox x:Name="txtPassword"
+                                         FontSize="14"
+                                         FontFamily="Montserrat"
+                                         Padding="12,10"
+                                         BorderThickness="0"
+                                         Background="Transparent"
+                                         KeyDown="TxtPassword_KeyDown"/>
+                        </Border>
+
+                        <!-- Botón Iniciar Sesión -->
+                        <Button Content="Iniciar sesión"
+                                Width="110"
+                                Height="30"
+                                Foreground="White" 
+                                Background="#1FA303"
+                                Cursor="Hand"
+                                Click="BtnSignIn_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            CornerRadius="12"
+                                            x:Name="border">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        TextElement.Foreground="{TemplateBinding Foreground}"
+                                                        TextElement.FontWeight="SemiBold"
+                                                        TextElement.FontSize="14"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#007D00"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <TextBlock Text="¿Olvidaste tu contraseña? Contacta al administrador"
+                                   Foreground="Gray"
+                                   FontSize="10"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,15,0,0"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
