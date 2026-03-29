@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\LENOVO\\Documents\\vs\\Proyecto_senavicola\\",
+  "WorkspaceRootPath": "C:\\Users\\LENOVO\\Documents\\2026\\janier\\vs\\Proyecto_senavicola\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C87AFDA3-52B9-4FB4-BF87-E2E971D4A5CB}|Proyecto_senavicola\\Proyecto_senavicola.csproj|c:\\users\\lenovo\\documents\\vs\\proyecto_senavicola\\proyecto_senavicola\\view\\pages\\huevospage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C87AFDA3-52B9-4FB4-BF87-E2E971D4A5CB}|Proyecto_senavicola\\Proyecto_senavicola.csproj|solutionrelative:proyecto_senavicola\\view\\pages\\huevospage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C87AFDA3-52B9-4FB4-BF87-E2E971D4A5CB}|Proyecto_senavicola\\Proyecto_senavicola.csproj|c:\\users\\lenovo\\documents\\2026\\janier\\vs\\proyecto_senavicola\\proyecto_senavicola\\view\\pages\\cameravisionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C87AFDA3-52B9-4FB4-BF87-E2E971D4A5CB}|Proyecto_senavicola\\Proyecto_senavicola.csproj|solutionrelative:proyecto_senavicola\\view\\pages\\cameravisionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,14 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HuevosPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\vs\\Proyecto_senavicola\\Proyecto_senavicola\\view\\pages\\HuevosPage.xaml.cs",
-              "RelativeDocumentMoniker": "Proyecto_senavicola\\view\\pages\\HuevosPage.xaml.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\Documents\\vs\\Proyecto_senavicola\\Proyecto_senavicola\\view\\pages\\HuevosPage.xaml.cs",
-              "RelativeToolTip": "Proyecto_senavicola\\view\\pages\\HuevosPage.xaml.cs",
-              "ViewState": "AgIAAI4IAAAAAAAAAADwv5MIAAAJAAAAAAAAAA==",
+              "Title": "Cameravisionservice.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\Documents\\2026\\janier\\vs\\Proyecto_senavicola\\Proyecto_senavicola\\view\\pages\\Cameravisionservice.cs",
+              "RelativeDocumentMoniker": "Proyecto_senavicola\\view\\pages\\Cameravisionservice.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\Documents\\2026\\janier\\vs\\Proyecto_senavicola\\Proyecto_senavicola\\view\\pages\\Cameravisionservice.cs",
+              "RelativeToolTip": "Proyecto_senavicola\\view\\pages\\Cameravisionservice.cs",
+              "ViewState": "AgIAACMBAAAAAAAAAAAIwC0BAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T12:35:25.49Z",
+              "WhenOpened": "2026-03-16T16:19:37.176Z",
               "EditorCaption": ""
             }
           ]

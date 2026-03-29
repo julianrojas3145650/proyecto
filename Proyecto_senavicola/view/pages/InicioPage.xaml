@@ -457,7 +457,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#D32F2F" Click="BtnRegistrarHuevos_Click">
                                 <StackPanel>
-                                    <TextBlock Text="🥚" FontSize="28"/>
+                                    <TextBlock Text="🥚" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Registrar" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Huevos" FontSize="9" Foreground="White" 
@@ -468,7 +468,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#00897B" Click="BtnGestionGallinas_Click">
                                 <StackPanel>
-                                    <TextBlock Text="🐔" FontSize="28"/>
+                                    <TextBlock Text="🐔" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Gestión" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Gallinas" FontSize="9" Foreground="White" 
@@ -479,7 +479,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#7B1FA2" Click="BtnReportes_Click">
                                 <StackPanel>
-                                    <TextBlock Text="📊" FontSize="28"/>
+                                    <TextBlock Text="📊" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Ver" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Reportes" FontSize="9" Foreground="White" 
@@ -490,7 +490,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#F57C00" Click="BtnInsumos_Click">
                                 <StackPanel>
-                                    <TextBlock Text="📦" FontSize="28"/>
+                                    <TextBlock Text="📦" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Gestión" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Insumos" FontSize="9" Foreground="White" 
@@ -501,7 +501,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#0288D1" Click="BtnAlimentacion_Click">
                                 <StackPanel>
-                                    <TextBlock Text="🍽️" FontSize="28"/>
+                                    <TextBlock Text="🍽️" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Control" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Alimentación" FontSize="9" Foreground="White" 
@@ -512,7 +512,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#FFB300" Click="BtnVentas_Click">
                                 <StackPanel>
-                                    <TextBlock Text="💰" FontSize="28"/>
+                                    <TextBlock Text="💰" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Registrar" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Ventas" FontSize="9" Foreground="White" 
@@ -523,7 +523,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#5C6BC0" Click="BtnConfiguracion_Click">
                                 <StackPanel>
-                                    <TextBlock Text="⚙️" FontSize="28"/>
+                                    <TextBlock Text="⚙️" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Ir a" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Config." FontSize="9" Foreground="White" 
@@ -534,7 +534,7 @@
                             <Button Style="{StaticResource QuickActionButtonStyle}" 
                                     Background="#37474F" Click="BtnActualizar_Click">
                                 <StackPanel>
-                                    <TextBlock Text="🔄" FontSize="28"/>
+                                    <TextBlock Text="🔄" FontSize="28" Foreground="White"/>
                                     <TextBlock Text="Actualizar" FontSize="9" Foreground="White" 
                                                HorizontalAlignment="Center" Margin="0,5,0,0"/>
                                     <TextBlock Text="Datos" FontSize="9" Foreground="White" 

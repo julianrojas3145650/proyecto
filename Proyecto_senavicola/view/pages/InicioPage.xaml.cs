@@ -237,7 +237,7 @@ namespace Proyecto_senavicola.view.pages
 
             var txtCodigo = new TextBlock
             {
-                Text = $"🏠 {codigo}",
+                Text = $"🏠 {nombre}",
                 FontWeight = FontWeights.Bold,
                 FontSize = 13
             };
